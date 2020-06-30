@@ -9,7 +9,6 @@
 </head>
 <body>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css">
       <div class="carousel" data-flickity='{ "fullscreen": true }'>
     <div class="carousel-cell first">
       <img class="catalog-image" src="./2000h/hot-spring-2020-catalog-page-number-1.png">
@@ -79,8 +78,30 @@
     
     
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+    <!-- <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script> -->
     
+    <script defer src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
+    <script>
+        var carousel = document.querySelector('.carousel');
+    var flkty = new Flickity( carousel, {
+      imagesLoaded: true,
+      percentPosition: false,
+    });
     
+    var imgs = carousel.querySelectorAll('.carousel-cell img');
+    // get transform property
+    var docStyle = document.documentElement.style;
+    var transformProp = typeof docStyle.transform == 'string' ?
+      'transform' : 'WebkitTransform';
+    
+    flkty.on( 'scroll', function() {
+      flkty.slides.forEach( function( slide, i ) {
+        var img = imgs[i];
+        var x = ( slide.target + flkty.x ) * -1/3;
+        img.style[ transformProp ] = 'translateX(' + x  + 'px)';
+      });
+    });
+    </script>
 </body>
 </html>
