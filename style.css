@@ -1,0 +1,84 @@
+body {
+    transition-duration: 400ms;
+    background-color: #222;
+}
+
+.carousel {
+    position: relative;
+    max-height: calc(100vh - 30px);
+    max-width: calc(100vw - 30px);
+}
+
+.carousel-cell {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 1s;
+}
+
+.carousel-cell.split::before {
+    content: "";
+    left: 0%;
+    min-width: 50%;
+    min-height: 100%;
+    box-shadow: 5px 0 35px -14px #000;
+    position: absolute;
+    z-index: 7
+}
+
+
+.carousel-cell.split::after {
+    content: "";
+    right: 0%;
+    min-width: 50%;
+    min-height: 100%;
+    box-shadow: -3px 0 35px -14px #000;
+    position: absolute;
+    z-index: 8
+}
+
+.carousel-cell:not(.is-selected) {
+    opacity: 0.2;
+    filter: blur(1px);
+    transition-duration: 1s;
+    -webkit-filter: blur(1px);
+    transform: scaleX(-0.3);
+    -webkit-transform: scaleX(-0.3);
+    -moz-transform: scaleX(-0.3);
+    -ms-transform: scaleX(-0.3);
+    -o-transform: scaleX(-0.3);
+}
+
+.carousel-cell>img {
+    max-height: calc(100vh - 30px);
+    max-width: calc(100vw - 30px);
+
+}
+
+.flickity-button>.flickity-button-icon {
+    color: #099ca6 !important;
+}
+
+.flickity-page-dots {
+    position: absolute;
+    width: 100%;
+    bottom: 15px !important;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+}
+
+.flickity-page-dots li.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
+    background: #333;
+
+    opacity: .25;
+    cursor: pointer;
+
+}
