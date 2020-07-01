@@ -1,6 +1,12 @@
 * { transition-duration: 200ms }
 
-body { background-color: #222 }
+@media (prefers-color-scheme: dark) {
+    body { background-color: #222 }
+}
+
+@media (prefers-color-scheme: light) {
+    body { background-color: #fff }
+}
 
 .carousel {
     position: relative;
